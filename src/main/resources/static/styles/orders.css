@@ -152,6 +152,13 @@ body {
   border-color: var(--accent-color);
 }
 
+.validationError {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
 .submit-btn {
   background: var(--accent-color);
   color: white;

@@ -164,6 +164,13 @@ button:hover {
   box-shadow: 0 0 30px rgba(249, 115, 22, 0.8);
 }
 
+.validationError {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
 .glow-blob {
   position: absolute;
   width: 400px;

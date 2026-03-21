@@ -35,22 +35,37 @@
           <div class="form-group">
             <label for="deliveryName">Name</label>
             <input type="text" th:field="*{deliveryName}" placeholder="Your full name" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryName')}"
+                  th:errors="*{deliveryName}">Name Error</span>
           </div>
           <div class="form-group">
             <label for="deliveryStreet">Street address</label>
             <input type="text" th:field="*{deliveryStreet}" placeholder="Street and house number" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryStreet')}"
+                  th:errors="*{deliveryStreet}">Street Error</span>
           </div>
           <div class="form-group">
             <label for="deliveryCity">City</label>
             <input type="text" th:field="*{deliveryCity}" placeholder="City" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryCity')}"
+                  th:errors="*{deliveryCity}">City Error</span>
           </div>
           <div class="form-group">
             <label for="deliveryState">State</label>
             <input type="text" th:field="*{deliveryState}" placeholder="State" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryState')}"
+                  th:errors="*{deliveryState}">State Error</span>
           </div>
           <div class="form-group">
             <label for="deliveryZip">Zip code</label>
             <input type="text" th:field="*{deliveryZip}" placeholder="Zip code" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryZip')}"
+                  th:errors="*{deliveryZip}">Zip Error</span>
           </div>
         </div>
 
@@ -59,14 +74,23 @@
           <div class="form-group">
             <label for="ccNumber">Credit Card #</label>
             <input type="text" th:field="*{ccNumber}" placeholder="0000 0000 0000 0000" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccNumber')}"
+                  th:errors="*{ccNumber}">CC Num Error</span>
           </div>
           <div class="form-group">
             <label for="ccExpiration">Expiration</label>
             <input type="text" th:field="*{ccExpiration}" placeholder="MM/YY" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccExpiration')}"
+                  th:errors="*{ccExpiration}">CC Exp Error</span>
           </div>
           <div class="form-group">
             <label for="ccCVV">CVV</label>
             <input type="text" th:field="*{ccCVV}" placeholder="123" />
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccCVV')}"
+                  th:errors="*{ccCVV}">CC CVV Error</span>
           </div>
         </div>
 
