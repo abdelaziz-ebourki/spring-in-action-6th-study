@@ -1,6 +1,5 @@
 package sia.taco_cloud.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,30 +18,28 @@ import sia.taco_cloud.domain.Ingredient;
 import sia.taco_cloud.domain.IngredientType;
 import sia.taco_cloud.domain.Taco;
 import sia.taco_cloud.domain.TacoOrder;
+import sia.taco_cloud.repository.IngredientRepository;
 
 @Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
+
+    private IngredientRepository ingredientRepository;
+
+    public DesignTacoController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", IngredientType.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", IngredientType.WRAP),
-                new Ingredient("GRBF", "Ground Beef", IngredientType.PROTEIN),
-                new Ingredient("CARN", "Carnitas", IngredientType.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", IngredientType.VEGGIES),
-                new Ingredient("LETC", "Lettuce", IngredientType.VEGGIES),
-                new Ingredient("CHED", "Cheddar", IngredientType.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", IngredientType.CHEESE),
-                new Ingredient("SLSA", "Salsa", IngredientType.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", IngredientType.SAUCE));
+        Iterable<Ingredient> ingredients = ingredientRepository.findAll();
 
         IngredientType[] types = IngredientType.values();
         for (IngredientType type : types) {
             model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
+                    filterByType((List<Ingredient>) ingredients, type));
         }
     }
 
@@ -67,7 +64,7 @@ public class DesignTacoController {
             @ModelAttribute TacoOrder tacoOrder) {
 
         if (errors.hasErrors()) {
-            log.info("We've gor some input errors");
+            log.info("We've got some input errors");
             return "design";
         }
 
