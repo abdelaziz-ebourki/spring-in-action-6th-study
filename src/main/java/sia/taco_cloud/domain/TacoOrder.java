@@ -1,17 +1,25 @@
 package sia.taco_cloud.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
 public class TacoOrder {
+    @NotNull
+    private Long id;
+
+    @NotNull
+    private Date placedAt = new Date();
+
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
 
