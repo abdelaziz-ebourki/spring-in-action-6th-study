@@ -65,6 +65,9 @@ public class DesignTacoController {
 
         if (errors.hasErrors()) {
             log.info("We've got some input errors");
+            for (var error : errors.getAllErrors()) {
+                log.info("Error: {}", error.getObjectName() + ": " + error.getDefaultMessage());
+            }
             return "design";
         }
 
